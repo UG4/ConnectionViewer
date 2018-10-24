@@ -34,7 +34,7 @@ Navigate to the `ConnectionViewer` core [Gradle](http://www.gradle.org/) project
     
 #### Windows (CMD)
 
-    gradlew ConnectionViewer 
+    gradlew assemble 
     
 ### Install VRL-Studio plugin via Gradle
 
