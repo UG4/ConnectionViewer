@@ -1546,13 +1546,12 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
 		if (!fileLoaded)
 			return;
 		bDragged = false;
-		int i = evt.getWheelRotation();
+		double rot = evt.getPreciseWheelRotation();
 		double factor;
 
-		if (i < 0)
+		if (rot < 0)
 		{
 			factor = 1 / 0.91;
-			i = -i;
 		} else
 		{
 			factor = 0.91;

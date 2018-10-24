@@ -331,7 +331,7 @@ public class ConnectionViewer extends javax.swing.JFrame
 	
 	public static void main(String args[]) throws InterruptedException
 	{
-		startConnectionViewer(args,true);
+		startConnectionViewer(args,false);
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private edu.gcsc.connectionviewer.ConnectionViewerPanel jConnectionViewerPanel;
