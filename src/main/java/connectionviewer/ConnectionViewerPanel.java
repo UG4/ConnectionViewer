@@ -1841,8 +1841,9 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
 	}
 	public void ExportToPDF()
 	{
-		if (cvf == null || filename == null || matrices == null || matrices.length == 0)
+		if (filename == null || matrices == null || matrices.length == 0)
         {
+            
             return;
         }
 
@@ -2004,7 +2005,7 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        new Export(this).show();
+        new Export(this).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jShowParallelNodesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jShowParallelNodesActionPerformed

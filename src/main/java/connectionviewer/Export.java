@@ -4,6 +4,11 @@
  */
 package connectionviewer;
 
+import eu.mihosoft.vrl.system.VRL;
+import eu.mihosoft.vrl.visual.VSwingUtil;
+
+import javax.swing.*;
+
 /**
  *
  * @author mrupp
@@ -17,9 +22,9 @@ public class Export extends javax.swing.JDialog
 	ConnectionViewerPanel cwp;
 	Export(ConnectionViewerPanel a)
 	{
-		super(a.getFrame(), true);
-		cwp = a;
-		initComponents();		
+            super(a.getFrame(), true);
+            cwp = a;
+            initComponents();		
 	}
 	/**
 	 * This method is called from within the constructor to initialize the form.
