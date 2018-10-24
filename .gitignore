@@ -1,4 +1,6 @@
 /build/
-/dist/
-/ConnectionViewer.app/
-/ConnectionViewer.jar
+/out/
+/bin/
+/.gradle/
+/.vscode/
+/.settings/
