@@ -48,9 +48,7 @@ import java.io.Serializable;
 
 
 // ComponentInfo defines the menu entry for this component.
-@ComponentInfo(name="ConnectionViewer Component", category="VRL")
-
-
+@ComponentInfo(name="ConnectionViewer Component", category="ConnectionViewer")
 // ObjectInfo defines the window title of this component.
 @ObjectInfo(name="ConnectionViewer Component")
 public class ConnectionViewerComponent implements Serializable
