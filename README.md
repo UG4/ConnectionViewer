@@ -15,7 +15,7 @@ Here's also a sample gallery : http://gcsc.uni-frankfurt.de/Members/mrupp/connec
 
 ### Requirements
 
-- Java >= 1.8
+- JDK >= 1.8
 - Internet connection (dependencies are downloaded automatically)
 - IDE: [Gradle](http://www.gradle.org/) Plugin (not necessary for command line usage)
 
