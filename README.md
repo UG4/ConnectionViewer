@@ -1,6 +1,8 @@
 ConnectionViewer
 ===============================
 
+[![Build Status](https://travis-ci.org/UG4/ConnectionViewer.svg?branch=master)](https://travis-ci.org/UG4/ConnectionViewer)
+
 Webpage: http://gcsc.uni-frankfurt.de/Members/mrupp/martin-rupps-homepage/connectionviewer
 
 ConnectionViewer uses a very easy ASCII file format for Coordinates, Matrices and Vectors, which is implementable in every programming language in a couple of minutes, a description is here: 
