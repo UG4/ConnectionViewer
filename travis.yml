@@ -1,0 +1,29 @@
+sudo: false
+
+env:
+  - TERM=dumb
+  
+matrix:
+    include:
+    - os: linux
+      language: java
+      jdk:  oraclejdk8
+    - os: linux
+      language: java
+      jdk:  oraclejdk9
+    - os: linux
+      language: java
+      jdk:  openjdk11
+    - os: linux
+      language: java
+      jdk:  openjdk-ea
+    allow_failures:
+       - os: linux
+         language: java
+         jdk:  openjdk-ea
+  
+script:
+  - export CWD=$(pwd)
+  - cd core
+  - sh ./gradlew clean assemble
+  - sh ./gradlew clean test
