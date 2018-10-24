@@ -32,6 +32,7 @@ package connectionviewer.vrl;
 
 import connectionviewer.ConnectionViewerPanel;
 import connectionviewer.ConnectionViewerParameters;
+import eu.mihosoft.vrl.annotation.TypeInfo;
 import eu.mihosoft.vrl.reflection.RepresentationType;
 import eu.mihosoft.vrl.reflection.TypeRepresentationBase;
 import eu.mihosoft.vrl.visual.Ruler;
@@ -46,6 +47,7 @@ import javax.swing.JPanel;
  *
  * @author Martin Rupp <martin.rupp@gcsc.uni-frankfurt.de>
  */
+@TypeInfo(input = true, output = true, style="default", type=ConnectionViewerParameters.class)
 public class ConnectionViewerType
         extends TypeRepresentationBase
 {
@@ -57,42 +59,30 @@ public class ConnectionViewerType
     ConnectionViewerPanel jConnectionViewerPanel;
     public ConnectionViewerType() {
 
-        setType(ConnectionViewerParameters.class); // visualization for String
         setValueName("ConnectionViewerParameters:"); // name of the visualization
-        setStyleName("default"); // style name: can be chosen via annotation
-
-        // Define this type representation as input
-        addSupportedRepresentationType(RepresentationType.INPUT);
 
         this.setLayout(new BorderLayout());
         //this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-	
-	
-	jConnectionViewerPanel = new ConnectionViewerPanel();
-	
+
+	    jConnectionViewerPanel = new ConnectionViewerPanel();
         
         this.setMinimumSize(jConnectionViewerPanel.getMinimumSize());
         this.setPreferredSize(jConnectionViewerPanel.getPreferredSize());
 	
-	
-	this.setBorder(VGraphicsUtil.createDebugBorder());
         this.setLayout(new BorderLayout());
         // Add ruler
-	JPanel right_panel = new JPanel();
-	right_panel.setLayout(new BoxLayout(right_panel,BoxLayout.Y_AXIS));
-	right_panel.setOpaque(false);
-	JPanel filler = new JPanel();
-	filler.setOpaque(false);
-	filler.setPreferredSize(new Dimension(0,200));
-	Ruler xychart_panel_ruler = new Ruler(this);
-	right_panel.add(filler);
-	right_panel.add(xychart_panel_ruler);
-	this.add(right_panel,BorderLayout.EAST);
+        JPanel right_panel = new JPanel();
+        right_panel.setLayout(new BoxLayout(right_panel,BoxLayout.Y_AXIS));
+        right_panel.setOpaque(false);
+        JPanel filler = new JPanel();
+        filler.setOpaque(false);
+        filler.setPreferredSize(new Dimension(0,200));
+        Ruler xychart_panel_ruler = new Ruler(this);
+        right_panel.add(filler);
+        right_panel.add(xychart_panel_ruler);
+        this.add(right_panel,BorderLayout.EAST);
 
-	this.add(jConnectionViewerPanel,BorderLayout.CENTER);
-	
-        // define this type representation as output
-        addSupportedRepresentationType(RepresentationType.OUTPUT);        
+        this.add(jConnectionViewerPanel,BorderLayout.CENTER);      
     }
 
     @Override

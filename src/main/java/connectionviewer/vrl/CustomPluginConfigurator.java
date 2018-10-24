@@ -63,7 +63,7 @@ public class CustomPluginConfigurator extends VPluginConfigurator {
             VPluginAPI vApi = (VPluginAPI) papi;
 
             // register type representation
-            vApi.addTypeRepresentation(new ConnectionViewerType());
+            vApi.addTypeRepresentation(ConnectionViewerType.class);
 
             // register component.
             // components must:
