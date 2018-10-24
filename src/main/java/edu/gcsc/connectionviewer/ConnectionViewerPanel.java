@@ -39,6 +39,8 @@
 package edu.gcsc.connectionviewer;
 
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -51,6 +53,7 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import de.erichseifert.vectorgraphics2d.*;
+import java.beans.PropertyChangeListener;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -67,7 +70,7 @@ import javax.swing.ScrollPaneConstants;
  *
  * @author mrupp Martin Rupp <martin.rupp@gcsc.uni-frankfurt.de>
  */
-public class ConnectionViewerPanel extends javax.swing.JPanel
+public class ConnectionViewerPanel extends javax.swing.JPanel implements ComponentListener
 {
 	static final public String sConnectionViewerVersion = 
 			"3.32";
@@ -158,8 +161,47 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
 		jProgressBar.setMaximum(100);
 	}
 	
+        
+        /**
+         * Sets the main divider location of this panel.
+         * @param loc location to set
+         */
+        public void setDividerLocation(int loc) {
+            jSplitPane1.setDividerLocation(loc);
+        }
+        
+        /**
+         * Sets the proportional divider location of this panel.
+         * @param loc  location to set
+         */
+        public void setDividerLocationProportional(double loc) {
+            jSplitPane1.setDividerLocation(loc);
+        }
+        
+        /**
+         * Returns the main divider location of this panel.
+         * @return the main divider location of this panel
+         */
+        public int getDividerLocation() {
+            return jSplitPane1.getDividerLocation();
+        }
 
-
+        /**
+         * Adds a property listener for observing the divider location of the
+         * main divider of this panel.
+         * @param l listenert to add
+         */
+        public void addDividerLocationChangeListener(PropertyChangeListener l) {
+            this.jSplitPane1.addPropertyChangeListener("dividerLocation",l);
+        }
+        
+        /**
+         * Removes the specified divider location listener from this panel.
+         * @param l listener to remove
+         */
+        public void removeDividerLocationChangeListener(PropertyChangeListener l) {
+            this.jSplitPane1.removePropertyChangeListener("dividerLocation",l);
+        }
 	
 	////////////////////////////////////////////////////////////////////////////
 	// selection save/restore
@@ -471,6 +513,26 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
 			ExportToTex(cl.GetParamString("-exportTex", "file.tex"));		
 			
 		repaint();
+	}
+
+	@Override
+	public void componentResized(ComponentEvent e) {
+		// nothing to do (see type representation for a use case)
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent e) {
+
+	}
+
+	@Override
+	public void componentShown(ComponentEvent e) {
+
+	}
+
+	@Override
+	public void componentHidden(ComponentEvent e) {
+
 	}
 
 	private class FileChangeTask extends TimerTask
@@ -1005,8 +1067,7 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
 	 */
 	@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jConnectionDisplay = new MyDrawing();
@@ -1047,32 +1108,25 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
         jConnectionDisplay.setBackground(new java.awt.Color(255, 255, 255));
         jConnectionDisplay.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jConnectionDisplay.setEnabled(false);
-        jConnectionDisplay.addMouseWheelListener(new java.awt.event.MouseWheelListener()
-        {
-            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt)
-            {
+        jConnectionDisplay.setMinimumSize(new java.awt.Dimension(0, 0));
+        jConnectionDisplay.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
                 jConnectionDisplayMouseWheelMoved(evt);
             }
         });
-        jConnectionDisplay.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mousePressed(java.awt.event.MouseEvent evt)
-            {
+        jConnectionDisplay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
                 jConnectionDisplayMousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt)
-            {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jConnectionDisplayMouseReleased(evt);
             }
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jConnectionDisplayMouseClicked(evt);
             }
         });
-        jConnectionDisplay.addMouseMotionListener(new java.awt.event.MouseMotionAdapter()
-        {
-            public void mouseDragged(java.awt.event.MouseEvent evt)
-            {
+        jConnectionDisplay.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jConnectionDisplayMouseDragged(evt);
             }
         });
@@ -1085,6 +1139,7 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
         jSplitPane1.setRightComponent(jConnectionDisplay);
 
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane2.setMinimumSize(new java.awt.Dimension(0, 0));
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1102,58 +1157,44 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
         jPanel2.setPreferredSize(new java.awt.Dimension(120, 427));
 
         jDrawConvectionBox.setText("Convection");
-        jDrawConvectionBox.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jDrawConvectionBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jDrawConvectionBoxStateChanged(evt);
             }
         });
-        jDrawConvectionBox.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jDrawConvectionBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDrawConvectionBoxActionPerformed(evt);
             }
         });
 
         jPrintEntriesInWindowBox.setText("Print Entries in Window");
-        jPrintEntriesInWindowBox.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jPrintEntriesInWindowBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jPrintEntriesInWindowBoxStateChanged(evt);
             }
         });
-        jPrintEntriesInWindowBox.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jPrintEntriesInWindowBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPrintEntriesInWindowBoxActionPerformed(evt);
             }
         });
 
         jPrintNumbersInWindowBox.setText("Print Indices in Window");
-        jPrintNumbersInWindowBox.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jPrintNumbersInWindowBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jPrintNumbersInWindowBoxStateChanged(evt);
             }
         });
-        jPrintNumbersInWindowBox.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jPrintNumbersInWindowBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPrintNumbersInWindowBoxActionPerformed(evt);
             }
         });
 
         jSearchTextField.setToolTipText("enter serach node");
-        jSearchTextField.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyReleased(java.awt.event.KeyEvent evt)
-            {
+        jSearchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 jSearchTextFieldKeyReleased(evt);
             }
         });
@@ -1161,110 +1202,84 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
         jLabel1.setText("Search node:");
 
         jNeighborhoodList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "all nodes", "Neigh 1", "Neigh 2", "Neigh 3", "Neigh 4" }));
-        jNeighborhoodList.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jNeighborhoodList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jNeighborhoodListMouseClicked(evt);
             }
         });
-        jNeighborhoodList.addItemListener(new java.awt.event.ItemListener()
-        {
-            public void itemStateChanged(java.awt.event.ItemEvent evt)
-            {
+        jNeighborhoodList.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jNeighborhoodListItemStateChanged(evt);
             }
         });
-        jNeighborhoodList.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jNeighborhoodList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jNeighborhoodListActionPerformed(evt);
             }
         });
 
         jRezoomButton.setText("recenter");
-        jRezoomButton.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jRezoomButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRezoomButtonMouseClicked(evt);
             }
         });
 
         openButton.setText("open new");
-        openButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        openButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openButtonActionPerformed(evt);
             }
         });
 
         reopenButton.setText("reopen");
-        reopenButton.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        reopenButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reopenButtonMouseClicked(evt);
             }
         });
 
         toSelectionButton.setText("to selection");
-        toSelectionButton.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        toSelectionButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 toSelectionButtonMouseClicked(evt);
             }
         });
-        toSelectionButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        toSelectionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 toSelectionButtonActionPerformed(evt);
             }
         });
 
         jShowParallelNodes.setText("Parallel Nodes");
-        jShowParallelNodes.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jShowParallelNodes.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jShowParallelNodesStateChanged(evt);
             }
         });
-        jShowParallelNodes.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jShowParallelNodes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jShowParallelNodesActionPerformed(evt);
             }
         });
 
         jZcompression.setText("Z compression");
-        jZcompression.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jZcompression.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jZcompressionStateChanged(evt);
             }
         });
 
         jDrawConnections.setText("Connections");
-        jDrawConnections.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jDrawConnections.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jDrawConnectionsStateChanged(evt);
             }
         });
 
         jAutomaticReloadBox.setText("Automatic Reload");
-        jAutomaticReloadBox.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jAutomaticReloadBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAutomaticReloadBoxActionPerformed(evt);
             }
         });
@@ -1276,39 +1291,31 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
         jFontsizeSlider.setMinimum(5);
         jFontsizeSlider.setMinorTickSpacing(1);
         jFontsizeSlider.setValue(12);
-        jFontsizeSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jFontsizeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jFontsizeSliderStateChanged(evt);
             }
         });
 
         jArrowConnectionsBox1.setText("as Arrows");
-        jArrowConnectionsBox1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jArrowConnectionsBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jArrowConnectionsBox1ActionPerformed(evt);
             }
         });
 
         jZCompressionSlider.setMaximum(200);
         jZCompressionSlider.setValue(100);
-        jZCompressionSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jZCompressionSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jZCompressionSliderStateChanged(evt);
             }
         });
 
         jArrowSizeSlider.setMaximum(1000);
         jArrowSizeSlider.setValue(100);
-        jArrowSizeSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jArrowSizeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jArrowSizeSliderStateChanged(evt);
             }
         });
@@ -1316,40 +1323,30 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
         jLabel3.setText("Arrow Size");
 
         jDrawDiffusionBox.setText("Diffusion");
-        jDrawDiffusionBox.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        jDrawDiffusionBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jDrawDiffusionBoxStateChanged(evt);
             }
         });
-        jDrawDiffusionBox.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jDrawDiffusionBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDrawDiffusionBoxActionPerformed(evt);
             }
         });
 
         jComponentList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "all comp"}));
-        jComponentList.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jComponentList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jComponentListMouseClicked(evt);
             }
         });
-        jComponentList.addItemListener(new java.awt.event.ItemListener()
-        {
-            public void itemStateChanged(java.awt.event.ItemEvent evt)
-            {
+        jComponentList.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComponentListItemStateChanged(evt);
             }
         });
-        jComponentList.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jComponentList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComponentListActionPerformed(evt);
             }
         });
@@ -1359,28 +1356,22 @@ public class ConnectionViewerPanel extends javax.swing.JPanel
         jLabel6.setText("University Frankfurt");
 
         jButton1.setText("Clip...");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
         jButton2.setText("Export...");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
         jButtonParallelReMove.setText("re-move");
-        jButtonParallelReMove.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonParallelReMove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonParallelReMoveActionPerformed(evt);
             }
         });

@@ -55,7 +55,7 @@ public class ConnectionViewerComponent implements Serializable
 {
     private static final long serialVersionUID=1L;
     
-    @MethodInfo(valueStyle="sample")
+    @MethodInfo(valueStyle="default", hide=false)
     public ConnectionViewerParameters loadFile(
             // param info defines the name and the style of the parameter
             // and an option string (supported file extension in this case)
