@@ -11,7 +11,34 @@ http://gcsc.uni-frankfurt.de/Members/mrupp/connectionviewer/mat-file-format-desc
 
 Here's also a sample gallery : http://gcsc.uni-frankfurt.de/Members/mrupp/connectionviewer/samples
 
- 
+## Building ConnectionViewer
+
+### Requirements
+
+- JDK >= 1.8
+- Internet connection (dependencies are downloaded automatically)
+- IDE: [Gradle](http://www.gradle.org/) Plugin (not necessary for command line usage)
+
+### IDE
+
+Open the `ConnectionViewer` core [Gradle](http://www.gradle.org/) project in your favourite IDE (tested with NetBeans 8.2 and IntelliJ 2018) and build it
+by calling the `assemble` task.
+
+### Command Line
+
+Navigate to the `ConnectionViewer` core [Gradle](http://www.gradle.org/) project (i.e., `path/to/ConnectionViewer`) and enter the following command
+
+#### Bash (Linux/macOS/Cygwin/other Unix shell)
+
+    bash gradlew assemble
+    
+#### Windows (CMD)
+
+    gradlew assemble 
+    
+### Install VRL-Studio plugin via Gradle
+
+To install ConnectionViewer as [VRL-Studio](https://vrl-studio.mihosoft.eu/) plugin via gradle, call the `installVRLPlugin` task and (re)start VRL-Studio.
 
 # Some documentation:
 

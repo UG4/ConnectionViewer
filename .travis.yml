@@ -23,7 +23,5 @@ matrix:
          jdk:  openjdk-ea
   
 script:
-  - export CWD=$(pwd)
-  - cd core
   - sh ./gradlew clean assemble
   - sh ./gradlew clean test
