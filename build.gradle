@@ -1,5 +1,6 @@
 /*
- * Copyright 2014 Michael Hoffer <info@michaelhoffer.de>. All rights reserved.
+ * Copyright 2016-2018 G-CSC, Uni-Frankfurt.de. All rights reserved.
+ * Copyright 2014-2018 Michael Hoffer <info@michaelhoffer.de>  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification, are
  * permitted provided that the following conditions are met:
@@ -42,7 +43,7 @@ buildscript {
     }
     
     dependencies {
-        classpath (group: 'eu.mihosoft.vrl', name: 'vrl', version: '0.4.3.2.3')
+        classpath (group: 'eu.mihosoft.vrl', name: 'vrl', version: '0.4.3.2.4')
     }
 }
 
@@ -56,8 +57,10 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.10'
     
-    compile (group: 'eu.mihosoft.vrl', name: 'vrl', version: '0.4.3.2.3')
-    compile (group: 'eu.mihosoft.vrl', name: 'vrl', version: '0.4.3.2.3', classifier: 'javadoc')
+    compile (group: 'eu.mihosoft.vrl', name: 'vrl', version: '0.4.3.2.4')
+    compile (group: 'eu.mihosoft.vrl', name: 'vrl', version: '0.4.3.2.4', classifier: 'javadoc')
+    
+    compile group: 'org.swinglabs', name: 'swing-layout', version: '1.0.3'
 
     compile group: 'de.erichseifert.vectorgraphics2d', name: 'VectorGraphics2D', version: '0.9.3'
 
@@ -66,7 +69,7 @@ dependencies {
     // You can read more about how to add dependency here:
     //   http://www.gradle.org/docs/current/userguide/dependency_management.html#sec:how_to_declare_your_dependencies
 
-    // local dependencies can be added by putting them to the lib/jar folder
+    // local dependencies can be added by putting them into the lib/jar folder
     compile files("lib/jars/")
 }
 
@@ -94,6 +97,14 @@ jar {
 
     // project class files compiled from source
     from files(sourceSets.main.output.classesDir)
+    
+    manifest {
+        attributes(
+          //'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+          'Main-Class': 'edu.gcsc.connectionviewer.ConnectionViewer'
+            
+    )
+  }
 }
 
 // loads the property file
