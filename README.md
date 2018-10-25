@@ -5,11 +5,16 @@ ConnectionViewer
 
 Webpage: http://gcsc.uni-frankfurt.de/Members/mrupp/martin-rupps-homepage/connectionviewer
 
-ConnectionViewer uses a very easy ASCII file format for Coordinates, Matrices and Vectors, which is implementable in every programming language in a couple of minutes, a description is here: 
+ConnectionViewer uses a very simple ASCII file format for Coordinates, Matrices and Vectors, which is implementable in every programming language in a couple of minutes, a description is here: 
 http://gcsc.uni-frankfurt.de/Members/mrupp/connectionviewer/mat-file-format-description
  
-
 Here's also a sample gallery : http://gcsc.uni-frankfurt.de/Members/mrupp/connectionviewer/samples
+
+## ConnectionViewer as VRL-Plugin
+
+ConnectionViewer provides a [VRL-Studio](https://mihosoft.eu) that can be used to visualize ConnectionViewer as reflection-based component in a .vrlp-project. Additionally, the full UI is availiable from the tool menu.
+
+<img src="resources/img/connectionviewer-in-vrl.jpg" width="400px">
 
 ## Building ConnectionViewer
 
