@@ -12,7 +12,7 @@ Here's also a sample gallery : http://gcsc.uni-frankfurt.de/Members/mrupp/connec
 
 ## ConnectionViewer as VRL-Plugin
 
-ConnectionViewer provides a [VRL-Studio](https://mihosoft.eu) that can be used to visualize ConnectionViewer as reflection-based component in a .vrlp-project. Additionally, the full UI is availiable from the tool menu.
+ConnectionViewer provides a [VRL-Studio](https://mihosoft.eu) plugin that can be used to visualize ConnectionViewer as reflection-based component in a .vrlp-project. Additionally, the full UI is availiable from the tool menu.
 
 <img src="resources/img/connectionviewer-in-vrl.jpg" width="400px">
 
