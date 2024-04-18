@@ -9,6 +9,9 @@ ConnectionViewer uses a very simple ASCII file format for Coordinates, Matrices 
 http://gcsc.uni-frankfurt.de/Members/mrupp/connectionviewer/mat-file-format-description
  
 Here's also a sample gallery : http://gcsc.uni-frankfurt.de/Members/mrupp/connectionviewer/samples
+## Bash for ConnectionViewer
+
+	java -jar <PATH>/ConnectionViewer/ConnectionViewer.jar %f
 
 ## ConnectionViewer as VRL-Plugin
 
