@@ -3,7 +3,7 @@ ConnectionViewer
 
 `ConnectionViewer` is a tool for visualizing matrices and their connections that arise in partial differential equation (PDE) simulations.
 It was developed mainly 2014-2018 to visualize and analyze the matrices of the simulation framework `ug4` [[Heppner et al., 2013]](#references).
-`ConnectionViewer` and `ug4` were created at [Gabriel Wittum](https://cemse.kaust.edu.sa/profiles/gabriel-wittum)'s research group at the `Goethe-Center for Scientific Computing (G-CSC)` at [Goethe University Frankfurt](https://www.uni-frankfurt.de/en), Germany.
+`ConnectionViewer` and `ug4` were created at [Gabriel Wittum](https://techsim.org/)'s research group at the `Goethe-Center for Scientific Computing (G-CSC)` at [Goethe University Frankfurt](https://www.uni-frankfurt.de/en), Germany.
 
 The `ConnectionViewer data format` is used as output format for matrices in the simulation framework `ug4` [[Heppner et al., 2013]](#references).
 It is a simple ASCII representation that is similar to e.g the Matrix Market Coordinate Format [[Boisvert et al., 1996]](#references).
