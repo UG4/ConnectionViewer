@@ -1,8 +1,7 @@
 ConnectionViewer File Format
 ===============================
 
-ConnectionViewer data format is mostly used in the simulation framework ug4 [[Heppner et al., 2013]](#references).
-It is a simple ASCII representation, that is similar to e.g the Matrix Market Coordinate Format [[Boisvert et al., 1996]](#references).
+ConnectionViewer data format is used as output format for Matrices in the simulation framework ug4 [[Heppner et al., 2013]](#references). It is a simple ASCII representation that is similar to e.g the Matrix Market Coordinate Format [[Boisvert et al., 1996]](#references).
 
 **Indexing into arrays and matrices is 0-based.**
 
@@ -211,13 +210,13 @@ A 3-node 2D matrix with one mark file:
 
 ## References
 
-- **[Boisvert et al., 1996]** Boisvert, Ronald F., R. Pozo and K. Remington
-  (1996). *The Matrix Market Exchange Formats: Initial Design.* National
-  Institute of Standards and Technology Internal Report, NISTIR 5935.
-  <http://math.nist.gov/MatrixMarket/formats.html>
 - **[Heppner et al., 2013]** Heppner, Ingo, Michael Lampe, Arne Nägel, Sebastian
   Reiter, Martin Rupp, Andreas Vogel and Gabriel Wittum (2013). *Software
   Framework ug4: Parallel Multigrid on the Hermit Supercomputer.* In: Nagel,
   Wolfgang E., Dietmar H. Kröner and Michael M. Resch (eds.), *High Performance
   Computing in Science and Engineering 2012*, pp. 435–449. Springer Berlin
   Heidelberg. doi:[10.1007/978-3-642-33374-3_32](http://dx.doi.org/10.1007/978-3-642-33374-3_32)
+- **[Boisvert et al., 1996]** Boisvert, Ronald F., R. Pozo and K. Remington
+  (1996). *The Matrix Market Exchange Formats: Initial Design.* National
+  Institute of Standards and Technology Internal Report, NISTIR 5935.
+  <http://math.nist.gov/MatrixMarket/formats.html>

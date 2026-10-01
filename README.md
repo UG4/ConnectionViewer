@@ -1,6 +1,13 @@
 ConnectionViewer
 ===============================
-ConnectionViewer uses a very simple ASCII file format for Coordinates, Matrices and Vectors, which is implementable in every programming language in a couple of minutes. It is documented in [FORMAT.md](FORMAT.md).
+
+`ConnectionViewer` is a tool for visualizing matrices and their connections that arise in partial differential equation (PDE) simulations.
+It was developed mainly 2014-2018 to visualize and analyze the matrices of the simulation framework `ug4` [[Heppner et al., 2013]](#references).
+`ConnectionViewer` and `ug4` were created at [Gabriel Wittum](https://cemse.kaust.edu.sa/profiles/gabriel-wittum)'s research group at the `Goethe-Center for Scientific Computing (G-CSC)` at [Goethe University Frankfurt](https://www.uni-frankfurt.de/en), Germany.
+
+The `ConnectionViewer data format` is used as output format for matrices in the simulation framework `ug4` [[Heppner et al., 2013]](#references).
+It is a simple ASCII representation that is similar to e.g the Matrix Market Coordinate Format [[Boisvert et al., 1996]](#references).
+Details are described in [FORMAT.md](FORMAT.md).
 
 <img src="resources/img/connectionviewer.png" width="600px">
 
@@ -117,3 +124,16 @@ Gatekeeper blocks it until you right-click and choose *Open*.
 - recenter: recenter the loaded file.
 
 - Search node: enter a node you want to see. This node is selected then. Use 2.234 to select node 234 from parallel file 2. Use to selection to zoom to the selected node.
+
+## References
+
+- **[Heppner et al., 2013]** Heppner, Ingo, Michael Lampe, Arne Nägel, Sebastian
+  Reiter, Martin Rupp, Andreas Vogel and Gabriel Wittum (2013). *Software
+  Framework ug4: Parallel Multigrid on the Hermit Supercomputer.* In: Nagel,
+  Wolfgang E., Dietmar H. Kröner and Michael M. Resch (eds.), *High Performance
+  Computing in Science and Engineering 2012*, pp. 435–449. Springer Berlin
+  Heidelberg. doi:[10.1007/978-3-642-33374-3_32](http://dx.doi.org/10.1007/978-3-642-33374-3_32)
+- **[Boisvert et al., 1996]** Boisvert, Ronald F., R. Pozo and K. Remington
+  (1996). *The Matrix Market Exchange Formats: Initial Design.* National
+  Institute of Standards and Technology Internal Report, NISTIR 5935.
+  <http://math.nist.gov/MatrixMarket/formats.html>
